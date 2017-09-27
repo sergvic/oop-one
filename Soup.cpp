@@ -6,3 +6,8 @@ using namespace std;
 Soup::Soup(string name) : Dish(name)
 {
 }
+
+string Soup::getName()
+{
+	return "Soup \"" + name + "\"";
+}

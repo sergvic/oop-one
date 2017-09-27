@@ -6,10 +6,9 @@ class Dish
 {
 public:
 	Dish(string);
-	string getName();
+	virtual string getName();
 protected:
 	int cookingTime;
-private:	
 	string name;
 };
 

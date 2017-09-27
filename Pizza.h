@@ -9,5 +9,6 @@ class Pizza : public Dish
 {
 public:
 	Pizza(string name);
+	string getName() override;
 private:
 };

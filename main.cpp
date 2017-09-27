@@ -15,15 +15,19 @@ void main()
 	MrCat cafe;
 	cafe.showMenu();
 	
-	Dish dishes[] = { 
-		Pizza("QuattroFormagio"),
-		Pizza("Margarita"),
-		Pizza("Havayian"),
-		Soup("Miso"),
-		Soup("CreamCheese"),
-		Pasta("Bolognees")
+	Dish *dishes[] = { 
+		new Pizza("QuattroFormagio"),
+		new Pizza("Margarita"),
+		new Pizza("Havayian"),
+		new Soup("Miso"),
+		new Soup("CreamCheese"),
+		new Pasta("Bolognees")
 	};
 
 	for (auto dish : dishes) 
-		cout << "Dish: " << dish.getName() << endl;
+		cout << dish->getName() << endl;
+
+	for (auto dish : dishes) {
+		delete dish;
+	}	
 }

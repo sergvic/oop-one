@@ -5,4 +5,5 @@ class Soup : public Dish
 {
 public:
 	Soup(string name);
+	string getName() override;
 };
