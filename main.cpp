@@ -1,6 +1,7 @@
 #include "Pizza.h"
 #include "Soup.h"
 #include "Pasta.h"
+#include "Order.h"
 #include "MrCat.h"
 #include <iostream>
 
@@ -14,20 +15,19 @@ void main()
 {
 	MrCat cafe;
 	cafe.showMenu();
+
+	Order newOrder(3);
+	newOrder += new Pizza("QuattroFormagio");
+	newOrder += new Soup("Miso");
 	
-	Dish *dishes[] = { 
-		new Pizza("QuattroFormagio"),
-		new Pizza("Margarita"),
-		new Pizza("Havayian"),
-		new Soup("Miso"),
-		new Soup("CreamCheese"),
-		new Pasta("Bolognees")
-	};
+	cout << newOrder;
 
-	for (auto dish : dishes) 
-		cout << dish->getName() << endl;
-
-	for (auto dish : dishes) {
-		delete dish;
-	}	
+	//Dish *dishes[] = { 
+	//	new Pizza("QuattroFormagio"),
+	//	new Pizza("Margarita"),
+	//	new Pizza("Havayian"),
+	//	new Soup("Miso"),
+	//	new Soup("CreamCheese"),
+	//	new Pasta("Bolognees")
+	//};
 }

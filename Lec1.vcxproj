@@ -145,6 +145,7 @@
     <ClCompile Include="Dish.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MrCat.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="Pasta.cpp" />
     <ClCompile Include="Pizza.cpp" />
     <ClCompile Include="Soup.cpp" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Dish.h" />
     <ClInclude Include="MrCat.h" />
+    <ClInclude Include="Order.h" />
     <ClInclude Include="Pasta.h" />
     <ClInclude Include="Pizza.h" />
     <ClInclude Include="Soup.h" />
