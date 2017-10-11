@@ -8,6 +8,7 @@ public:
 	Dish(string, double);
 	virtual string getName()=0;
 	double getPrice();
+	int getCookingTime();
 
 protected:
 	int cookingTime;

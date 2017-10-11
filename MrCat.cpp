@@ -16,3 +16,9 @@ void MrCat::showMenu()
 	cout << "2 - Soup" << endl << endl;
 	cout << "3 - Pasta" << endl << endl;
 }
+
+int MrCat::startOrder(Order o)
+{
+
+	return 0;
+}

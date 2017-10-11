@@ -12,6 +12,8 @@ public:
 
 	double Price();
 
+	int getCookingTime();
+
 	Order(int tableId);
 
 	void print();

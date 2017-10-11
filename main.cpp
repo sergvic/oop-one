@@ -14,6 +14,7 @@
 
 using namespace std;
 
+#pragma region Threading tests
 mutex itemsLock;
 vector<int> items = {1,2,3,4,5,6,6};
 
@@ -67,6 +68,7 @@ void testThreads()
 
 	cout << "All threads finished!" << endl;
 }
+#pragma endregion
 
 void main()
 {
@@ -75,7 +77,8 @@ void main()
 	cafe.showMenu();
 
 	Order newOrder(tableNum);
-	
+
+#pragma region Take order
 	char c = -1;
 	while (c != '0') {
 		Dish *newDish = nullptr;
@@ -100,16 +103,12 @@ void main()
 				" added to order. Current cheque: " << newOrder.Price() << endl;
 		}
 	}
-	
-	cout << newOrder;
+		
+	cout << newOrder<<endl;
+	cout << "Cooking time: " << newOrder.getCookingTime()<<endl;
+#pragma endregion
 
-	//Dish *dishes[] = { 
-	//	new Pizza("QuattroFormagio"),
-	//	new Pizza("Margarita"),
-	//	new Pizza("Havayian"),
-	//	new Soup("Miso"),
-	//	new Soup("CreamCheese"),
-	//	new Pasta("Bolognees")
-	//};
+	//cafe.startOrder(newOrder);
+	
 	system("pause");
 }
