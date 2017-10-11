@@ -5,10 +5,14 @@ using namespace std;
 class Dish
 {
 public:
-	Dish(string);
-	virtual string getName();
+	Dish(string, double);
+	virtual string getName()=0;
+	double getPrice();
+
 protected:
 	int cookingTime;
 	string name;
+	double price;
+
 };
 

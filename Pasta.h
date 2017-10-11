@@ -5,7 +5,7 @@
 class Pasta : public Dish
 {
 public:
-	Pasta(string name);
+	Pasta(string name, double price);
 	string getName() override;
 };
 

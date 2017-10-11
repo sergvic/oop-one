@@ -4,6 +4,6 @@
 class Soup : public Dish
 {
 public:
-	Soup(string name);
+	Soup(string name, double price);
 	string getName() override;
 };
