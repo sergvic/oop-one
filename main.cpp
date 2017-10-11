@@ -13,38 +13,44 @@
 
 using namespace std;
 
-void testThread() {
-	while (true) {
-		int i = 5;
-		double a = 4;
-		while (i<2000000000) {
-			i += a*a;
-			a -= i;
-		}
-		cout << ".";
-		this_thread::sleep_for(3s);
+vector<int> items = {1,2,3,4,5,6,6};
+
+void addThread() {
+	int i = 0;
+	while (i<500000000) {
+		items.push_back(i*i);
+		//this_thread::sleep_for(0.00000001s);
+		i++;
+	}
+}
+
+void removeThread() {
+	int i = 0;
+	while (i<50000000) {
+		if(items.size()>0)
+			items.pop_back();
+		//this_thread::sleep_for(0.00000001s);
+		i++;
 	}
 }
 
 void main()
 {
-	thread t1(testThread);
-	thread t2(testThread);
-	thread t3(testThread);
-	while (true) {
-		int i = 5;
-		double a = 4;
-		while (i<200000000) {
-			i += a*a;
-			a -= i;
-		}
-		cout << "*";
-		this_thread::sleep_for(2s);
+	thread workers[] = { thread(addThread), thread(removeThread), thread(removeThread) };
+
+	int k = 0;
+	while (k<500) {
+		cout << items.size()<<endl;
+
+		this_thread::sleep_for(1s);
+		k++;
 	}
-	t1.join();
-	cout << "Thread 1 finished!" << endl;
-	t2.join();
-	t3.join();
+
+	for (int j=0; j<3; j++)
+		workers[j].join();
+
+	cout << "All threads finished!" << endl;
+
 	return;
 	
 	MrCat cafe;
