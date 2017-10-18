@@ -14,6 +14,8 @@
 
 using namespace std;
 
+int test;
+
 #pragma region Threading tests
 mutex itemsLock;
 vector<int> items = {1,2,3,4,5,6,6};
@@ -70,7 +72,7 @@ void testThreads()
 }
 #pragma endregion
 
-void main()
+void main_main()
 {
 	int tableNum = 3;
 	MrCat cafe;
