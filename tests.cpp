@@ -15,7 +15,15 @@ protected:
 
 class A : public Base {
 public:
-	
+	A(const A &a) : Base(a.dyna), base(a.base) { cout << "!!!!!!!! Copying A!\n"; }
+
+	A& operator= (A &a) {
+		dyna = a.dyna;
+		cout << "!!!!!!!! Assigning A!\n";
+
+		return *this;
+	}
+
 	A(int initBase) : Base(33), base(initBase)
 	{	}
 
@@ -33,6 +41,20 @@ public:
 
 int A::staticVar;
 
+A &modifyA(const A &obj) {
+	A tmp(obj);
+	tmp.setDynamicVar(99);
+	return tmp;
+}
+
+void printA(char *name, A &obj) {
+	cout << name << endl
+		<< " Dynamic: " << obj.getDynamicVar()
+		<< "; Base: " << obj.base
+		<< "; Static: " << obj.staticVar
+		<< endl;
+}
+
 void main()
 {
 	int tmpVar = 2;
@@ -41,9 +63,10 @@ void main()
 	tester.staticVar = 1;
 	secondTester.staticVar = 2;
 
-	cout << "Tests: \n" 
-		<< " Dynamic: " << tester.getDynamicVar() 
-		<< "; Base: " << tester.base 
-		<< "; Static: " << tester.staticVar 
-		<< endl;
+	tester = modifyA(tester);
+
+	//A thirdTester(tester);
+
+	printA("The first tester: ", tester);
+	//printA("The third tester: ", thirdTester);
 }
