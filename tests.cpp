@@ -5,23 +5,45 @@
 
 using namespace std;
 
-//extern int test;
+class Base {
+public:	
+	Base(int initDyna):dyna(initDyna)
+	{}
+protected:
+	int dyna;
+};
 
-class A {
+class A : public Base {
 public:
-	int dynamicVar = 0;
+	
+	A(int initBase) : Base(33), base(initBase)
+	{	}
+
+	A() : Base(11), base(staticBase)
+	{	}
+
+	int getDynamicVar() { return dyna; }
+	void setDynamicVar(int newValue) { dyna = newValue; }
+
 	static int staticVar;
+
+	const int base;
+	static const int staticBase = 10;
 };
 
 int A::staticVar;
 
 void main()
 {
-	A tester, secondTester;
-	tester.dynamicVar = 1;
-	secondTester.dynamicVar = 2;
+	int tmpVar = 2;
+	A tester(3), secondTester;
+	tester.setDynamicVar(tester.getDynamicVar() + 1);
 	tester.staticVar = 1;
 	secondTester.staticVar = 2;
 
-	cout << "OK; " << tester.staticVar << "; " << tester.dynamicVar << endl;
+	cout << "Tests: \n" 
+		<< " Dynamic: " << tester.getDynamicVar() 
+		<< "; Base: " << tester.base 
+		<< "; Static: " << tester.staticVar 
+		<< endl;
 }
